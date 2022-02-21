@@ -3,6 +3,8 @@ import Header from "./components/Header";
 import Figure from "./components/Figure";
 import WrongLetters from "./components/WrongLetters";
 import Word from "./components/Word";
+import Notification from "./components/Notification";
+import PopUp from "./components/PopUp";
 import { showNotification as show } from "./helpers/helpers";
 
 import { useEffect, useState } from "react";
@@ -43,6 +45,16 @@ function App() {
     return () => window.removeEventListener("keydown", handleKeydown);
   }, [correctLetters, wrongLetters, playable]);
 
+  function playAgain() {
+    setPlayable(true);
+
+    //empty arrays
+    setCorrectLetters([]);
+    setWrongLetters([]);
+    const random = Math.floor(Math.random() * words.length);
+    selectedWord = words[random];
+  }
+
   return (
     <>
       <Header />
@@ -51,6 +63,14 @@ function App() {
         <WrongLetters wrongLetters={wrongLetters} />
         <Word selectedWord={selectedWord} correctLetters={correctLetters} />
       </div>
+      <PopUp
+        correctLetters={correctLetters}
+        wrongLetters={wrongLetters}
+        selectedWord={selectedWord}
+        setPlayable={setPlayable}
+        playAgain={playAgain}
+      />
+      <Notification showNotification={showNotification} />
     </>
   );
 }
