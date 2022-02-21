@@ -23,7 +23,7 @@ h1 {
   position: relative;
   margin: auto;
   height: 350px;
-  width: 450px;
+  width: 550px;
 }
 
 .figure-container {
@@ -84,6 +84,7 @@ h1 {
   display: none;
   align-items: center;
   justify-content: center;
+  transition: display 300ms ease-in-out;
 }
 
 .popup {
@@ -119,6 +120,11 @@ h1 {
   position: absolute;
   bottom: -50px;
   transition: transform 0.3s ease-in-out;
+  left: 0;
+  right: 0;
+  text-align: center;
+  width: 40%;
+  margin: auto;
 }
 
 .notification-container p {
