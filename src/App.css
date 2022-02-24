@@ -6,9 +6,9 @@ body {
   background-color: #34495e;
   color: #fff;
   font-family: Arial, Helvetica, sans-serif;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  /* display: flex; */
+  /* flex-direction: column; */
+  /* align-items: center; */
   height: 80vh;
   margin: 0;
   overflow: hidden;
@@ -16,14 +16,19 @@ body {
 
 h1 {
   margin: 20px 0 0;
+  text-align: center;
+}
+
+p {
+  text-align: center;
 }
 
 .game-container {
   padding: 20px 30px;
   position: relative;
-  margin: auto;
-  height: 350px;
-  width: 550px;
+  width: 60%;
+  display: flex;
+  justify-content: center;
 }
 
 .figure-container {
@@ -40,7 +45,7 @@ h1 {
 .wrong-letters-container {
   position: absolute;
   top: 20px;
-  right: 20px;
+  right: -150px;
   display: flex;
   flex-direction: column;
   text-align: right;
@@ -57,8 +62,8 @@ h1 {
 .word {
   display: flex;
   position: absolute;
-  bottom: 10px;
-  left: 50%;
+  bottom: -60px;
+  left: 100%;
   transform: translateX(-50%);
 }
 
@@ -125,6 +130,7 @@ h1 {
   text-align: center;
   width: 40%;
   margin: auto;
+  opacity: 0;
 }
 
 .notification-container p {
@@ -133,4 +139,5 @@ h1 {
 
 .notification-container.show {
   transform: translateY(-50px);
+  opacity: 1;
 }
