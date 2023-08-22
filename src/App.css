@@ -141,3 +141,22 @@ p {
   transform: translateY(-50px);
   opacity: 1;
 }
+
+.letter-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  margin-top: 80px;
+  justify-content: center;
+  padding: 25px;
+  @media screen and (min-width: 500px) {
+    display: none;
+  }
+}
+
+.letter-button {
+  text-align: center;
+
+  padding: 5px;
+  margin: 10px;
+  font-size: 16px;
+}

@@ -40,15 +40,34 @@ function App() {
         }
       }
     };
+
     window.addEventListener("keydown", handleKeydown);
 
-    return () => window.removeEventListener("keydown", handleKeydown);
+    return () => {
+      window.removeEventListener("keydown", handleKeydown);
+    };
   }, [correctLetters, wrongLetters, playable]);
+
+  function handleLetterButtonClick(letter) {
+    if (playable) {
+      if (selectedWord.includes(letter)) {
+        if (!correctLetters.includes(letter)) {
+          setCorrectLetters((currentLetters) => [...currentLetters, letter]);
+        } else {
+          show(setShowNotification);
+        }
+      } else {
+        if (!wrongLetters.includes(letter)) {
+          setWrongLetters((wrongLetters) => [...wrongLetters, letter]);
+        } else {
+          show(setShowNotification);
+        }
+      }
+    }
+  }
 
   function playAgain() {
     setPlayable(true);
-
-    //empty arrays
     setCorrectLetters([]);
     setWrongLetters([]);
     const random = Math.floor(Math.random() * words.length);
@@ -61,8 +80,21 @@ function App() {
       <div className="game-container">
         <Figure wrongLetters={wrongLetters} />
         <Word selectedWord={selectedWord} correctLetters={correctLetters} />
-
         <WrongLetters wrongLetters={wrongLetters} />
+      </div>
+      <div className="letter-buttons">
+        {Array.from({ length: 26 }, (_, index) => {
+          const letter = String.fromCharCode(97 + index); // 'a' to 'z'
+          return (
+            <button
+              key={letter}
+              className="letter-button"
+              onClick={() => handleLetterButtonClick(letter)}
+            >
+              {letter}
+            </button>
+          );
+        })}
       </div>
       <PopUp
         correctLetters={correctLetters}
